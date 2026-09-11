@@ -1,0 +1,13 @@
+﻿<routes>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5" maxSpeed="13.9"/>
+
+    <route id="r_NS" edges="n_to_c c_to_s"/>
+    <route id="r_SN" edges="s_to_c c_to_n"/>
+    <route id="r_EW" edges="e_to_c c_to_w"/>
+    <route id="r_WE" edges="w_to_c c_to_e"/>
+
+    <flow id="f_NS" route="r_NS" type="car" begin="0" end="3600" probability="0.2"/>
+    <flow id="f_SN" route="r_SN" type="car" begin="0" end="3600" probability="0.2"/>
+    <flow id="f_EW" route="r_EW" type="car" begin="0" end="3600" probability="0.15"/>
+    <flow id="f_WE" route="r_WE" type="car" begin="0" end="3600" probability="0.15"/>
+</routes>
