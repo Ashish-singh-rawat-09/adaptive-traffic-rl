@@ -4,4 +4,4 @@ __pycache__/
 .vscode/
 yolov8n.pt
 models/*.zip
-models/*.onnx
+# models/*.onnx
