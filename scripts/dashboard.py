@@ -1,4 +1,5 @@
-﻿import streamlit as st
+﻿import os
+import streamlit as st
 import requests
 import plotly.graph_objects as go
 
@@ -19,9 +20,12 @@ w2 = st.sidebar.slider("West Lane 2", 0, 30, 5)
 
 lane_queues = [float(x) for x in [n1, n2, s1, s2, e1, e2, w1, w2]]
 
-api_url = "http://127.0.0.1:8000/predict_phase"
+# Environment variable se URL lega; fallback local URL rahega
+DEFAULT_API_URL = "http://127.0.0.1:8000/predict_phase"
+api_url = os.getenv("API_URL", DEFAULT_API_URL)
+
 try:
-    response = requests.post(api_url, json={"lane_queues": lane_queues})
+    response = requests.post(api_url, json={"lane_queues": lane_queues}, timeout=10)
     if response.status_code == 200:
         data = response.json()
         rec_phase = data["recommended_phase"]
@@ -63,4 +67,4 @@ try:
     else:
         st.error(f"API Error: {response.status_code}")
 except Exception as e:
-    st.warning("Ensure FastAPI server (src.api.server:app) is running on port 8000!")
+    st.warning(f"Connecting to API at: {api_url}\nEnsure backend server is running.")
