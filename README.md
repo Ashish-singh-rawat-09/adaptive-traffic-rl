@@ -211,3 +211,33 @@ streamlit run scripts/dashboard.py
 * **Computer Vision**: Ultralytics YOLOv8, OpenCV
 * **Edge Inference**: ONNX, ONNX Runtime
 * **Deployment & UI**: FastAPI, Uvicorn, Streamlit, Plotly
+
+### 🛠️ Architecture & System Workflow
+
+```mermaid
+graph TD
+    classDef client fill:#FF4B4B,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef api fill:#009688,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef inference fill:#005CED,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef output fill:#46E3B7,stroke:#fff,stroke-width:2px,color:#333;
+
+    A[🎛️ Streamlit Dashboard] -->|1. User adjusts sliders| B(🚗 Input Queue Counts)
+    B -->|2. POST Request JSON| C[⚡ FastAPI Backend]
+    
+    subgraph Render Cloud Microservice
+        C -->|3. Hands vector to| D{🧠 ONNX Runtime Session}
+        D -->|4. Reads Model Weights| E[📁 traffic_dqn.onnx]
+        D -->|5. Forward Pass < 15ms| F(📊 Q-Values & argmax Action)
+    end
+    
+    F -->|6. JSON Response| C
+    C -->|7. API Response Payload| A
+    
+    A -->|8. Visual State Updates| G[🚦 Light Status: Green/Red]
+    A -->|9. Render metrics| H[📉 Live Q-Value Charts]
+
+    class A client;
+    class C api;
+    class D,E inference;
+    class G,H output;
+```
