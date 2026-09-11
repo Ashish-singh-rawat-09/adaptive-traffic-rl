@@ -1,3 +1,24 @@
+# 🚦 Adaptive Traffic Signal Control using Deep RL
+
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://adaptive-traffic-rl-fyumcmjkojetf4byrnfwjr.streamlit.app)
+[![Render Backend](https://img.shields.io/badge/Render-Backend%20Live-46E3B7?style=flat&logo=render&logoColor=white)](https://adaptive-traffic-rl.onrender.com)
+[![ONNX Runtime](https://img.shields.io/badge/ONNX%20Runtime-Inference-005CED?style=flat&logo=onnx&logoColor=white)](https://onnxruntime.ai)
+[![Python](https://img.shields.io/badge/Python-3.11.9-blue.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+
+An intelligent, multi-approach traffic light phase management system powered by Deep Q-Networks (DQN). The agent predicts dynamic green/red phases in real time based on continuous queue observations, served via a decoupled microservice architecture.
+
+---
+
+### 🌐 Live Deployments
+
+* **Interactive Streamlit Dashboard:**  
+  👉 [Open Live Control Dashboard](https://adaptive-traffic-rl-fyumcmjkojetf4byrnfwjr.streamlit.app)
+* **Inference API (FastAPI Backend):**  
+  👉 [Live API Health Endpoint](https://adaptive-traffic-rl.onrender.com)  
+  *Inference Route:* `POST /predict_phase`
+
+---
 # 🚦 Adaptive Traffic Signal Control using Deep Reinforcement Learning
 
 An intelligent, real-time traffic signal optimization system combining **Eclipse SUMO**, **Deep Q-Networks (DQN)**, and **YOLOv8** computer vision. The system dynamically adapts signal phase timings based on live queue density, delivering a **61.81% reduction in traffic delay penalty** over traditional pre-timed controllers.
